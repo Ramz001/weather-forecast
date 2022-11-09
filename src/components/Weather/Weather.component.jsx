@@ -4,6 +4,7 @@ import arrow from '../../assets/location-arrow-solid.svg'
 
 const Weather = ({ weatherData }) => {
     const { main, weather, wind, name } = weatherData
+
     return (
         <div className="flex flex-col text-white w-full h-3/5 p-5 gap-y-1">
             <article className="text-2xl tracking-widest mb-1">
@@ -28,7 +29,7 @@ const Weather = ({ weatherData }) => {
                 <img 
                     src={arrow} 
                     alt="arrow" 
-                    className={`mx-1 w-4 h-4 rotate-[${wind.deg}deg]`}
+                    className={`mx-1 w-4 h-4 rotate-[${wind.deg}deg] transform`}
                 />
                 {wind.speed} km/h
             </article>
