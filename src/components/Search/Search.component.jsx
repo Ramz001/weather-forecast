@@ -1,13 +1,15 @@
 import magnifyIcon from "../../assets/search.svg";
 
-const Search = ({ inputText, setInputText, searchLocation }) => {
+const Search = ({ inputText, setInputText, searchLocation, location }) => {
   const handleInputBox = (e) => {
-    e.preventDefault()
+    e.preventDefault();
     setInputText(e.target.value);
   };
 
+  const searchStyles = location[0].lat ? `mt-7` : `mt-0`;
+
   return (
-    <div className="opacity-80 w-full h-12 px-5 mt-7">
+    <div className={`opacity-80 w-full h-12 px-5 ${searchStyles}`}>
       <div className="relative w-full h-full group">
         <input
           value={inputText}

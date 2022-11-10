@@ -1,6 +1,8 @@
 import Search from "../Search/Search.component";
 import Weather from "../Weather/Weather.component";
 import { useState, useEffect } from "react";
+import { motion } from "framer-motion";
+import { containerVarients } from "../../utils/animations.library";
 
 const WeatherContainer = () => {
   const [inputText, setInputText] = useState("");
@@ -26,7 +28,7 @@ const WeatherContainer = () => {
     if (location[0].lat && location[0].lon) {
       fetchWeatherData();
     }
-  },[location])
+  }, [location]);
 
   const searchLocation = (event) => {
     if (event.key === "Enter") {
@@ -35,17 +37,21 @@ const WeatherContainer = () => {
   };
 
   return (
-    <div
-      className="flex flex-col items-center w-[32rem] h-72 backdrop-blur-md
-    bg-black/25 rounded-2xl mx-4 lg:mx-0"
+    <motion.div
+      className="flex flex-col items-center w-[32rem] bg-black/25 rounded-2xl mx-4 lg:mx-0"
+      variants={containerVarients}
+      animate={location[0].lat ? "open" : "closed"}
+      initial="hidden"
+      exit="exit"
     >
       <Search
         inputText={inputText}
         setInputText={setInputText}
         searchLocation={searchLocation}
+        location={location}
       />
       {weatherData.name && <Weather weatherData={weatherData} />}
-    </div>
+    </motion.div>
   );
 };
 
