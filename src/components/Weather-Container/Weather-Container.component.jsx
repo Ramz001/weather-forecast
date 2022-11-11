@@ -15,7 +15,7 @@ const WeatherContainer = () => {
 
   const url = `https://api.openweathermap.org/data/2.5/weather?lat=${location[0].lat}&lon=${location[0].lon}&appid=96cbb304c0fabab0f4349a4c129313f8&units=metric&lang=${i18n.language}`;
   const geoCode = `http://api.openweathermap.org/geo/1.0/direct?q=${inputText}&appid=96cbb304c0fabab0f4349a4c129313f8`;
-  console.log(i18n.language);
+
   const findGeoCode = async () => {
     const response = await fetch(geoCode);
     const data = await response.json();
@@ -42,7 +42,8 @@ const WeatherContainer = () => {
 
   return (
     <motion.div
-      className="flex flex-col items-center w-96 lg:w-[32rem] bg-black/25 rounded-2xl mx-4 lg:mx-0"
+      className="flex flex-col items-center w-[20rem] sm:w-[25rem] lg:w-[32rem] 
+      bg-black/25 rounded-2xl mx-4 lg:mx-0"
       variants={containerVarients}
       animate={location[0].lat ? "open" : "closed"}
       initial="hidden"

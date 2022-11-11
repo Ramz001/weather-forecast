@@ -3,9 +3,20 @@ import arrow from "../../assets/location-arrow-solid.svg";
 import { motion } from "framer-motion";
 import { useTranslation } from "react-i18next";
 
-const Weather = ({ weatherData, props }) => {
+const Weather = ({ weatherData }) => {
   const { main, weather, wind, name } = weatherData;
   const { t } = useTranslation();
+
+  let nameStyles = ''
+  if(name.length > 0 && name.length < 6) {
+    nameStyles = 'text-2xl'
+  }
+  if(name.length > 7 && name.length < 11) {
+    nameStyles = 'text-lg  xl:text-2xl'
+  }
+  if(name.length > 11 ){
+    nameStyles = 'text-base xl:text-2xl'
+  }
 
   return (
     <motion.div
@@ -19,7 +30,7 @@ const Weather = ({ weatherData, props }) => {
         },
       }}
     >
-      <article className="text-2xl tracking-widest mb-1">
+      <article className={`lg:tracking-widest mb-1 ${nameStyles}`}>
         {t("part1")} {name}
       </article>
       <article className="font-bold text-5xl">{main.temp}°C</article>
