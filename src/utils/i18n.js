@@ -9,7 +9,7 @@ i18n
   .use(Backend)
   .init({
     fallbackLng: "en",
-    debug: true,
+    debug: false,
     lng: 'en',
     backend: {
       loadPath: './translations/{{lng}}/translation.library.json'
