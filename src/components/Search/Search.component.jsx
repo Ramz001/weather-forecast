@@ -1,10 +1,13 @@
 import magnifyIcon from "../../assets/search.svg";
+import { useTranslation } from "react-i18next";
 
 const Search = ({ inputText, setInputText, searchLocation, location }) => {
   const handleInputBox = (e) => {
     e.preventDefault();
     setInputText(e.target.value);
   };
+
+  const { t } = useTranslation();
 
   const searchStyles = location[0].lat ? `mt-7` : `mt-0`;
 
@@ -17,7 +20,7 @@ const Search = ({ inputText, setInputText, searchLocation, location }) => {
           onChange={(e) => handleInputBox(e)}
           onKeyUp={searchLocation}
           type={"text"}
-          placeholder={"Search for a city..."}
+          placeholder={t("part5")}
         />
         <img
           src={magnifyIcon}

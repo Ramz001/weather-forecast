@@ -1,9 +1,11 @@
 import droplet from "../../assets/droplet-solid.svg";
 import arrow from "../../assets/location-arrow-solid.svg";
 import { motion } from "framer-motion";
+import { useTranslation } from "react-i18next";
 
-const Weather = ({ weatherData }) => {
+const Weather = ({ weatherData, props }) => {
   const { main, weather, wind, name } = weatherData;
+  const { t } = useTranslation();
 
   return (
     <motion.div
@@ -18,7 +20,7 @@ const Weather = ({ weatherData }) => {
       }}
     >
       <article className="text-2xl tracking-widest mb-1">
-        Weather in {name}
+        {t("part1")} {name}
       </article>
       <article className="font-bold text-5xl">{main.temp}°C</article>
       <article className="font-semibold text-lg flex items-center capitalize">
@@ -30,19 +32,19 @@ const Weather = ({ weatherData }) => {
         {weather[0].description}
       </article>
       <article className="text-sm flex items-center">
-        Humidity:
+        {t("part2")}
         <img src={droplet} alt="droplet" className="ml-1 w-3 h-3" />
         {main.humidity}%
       </article>
       <article className="text-sm flex items-center">
-        Wind Speed:
+        {t("part3")}
         <motion.img
           src={arrow}
           alt="arrow"
           className="mx-1 w-4 h-4 transform"
           animate={{ rotate: wind.deg }}
         />
-        {wind.speed} km/h
+        {wind.speed} {t("part4")}
       </article>
     </motion.div>
   );
